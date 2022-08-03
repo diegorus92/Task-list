@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { TareaComponent } from './componentes/tarea/tarea.component';
 import { BotonAgregarComponent } from './componentes/boton-agregar/boton-agregar.component';
 import { ListaTareasComponent } from './componentes/lista-tareas/lista-tareas.component';
+import { FormularioTareaComponent } from './componentes/formulario-tarea/formulario-tarea.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TareaComponent,
     BotonAgregarComponent,
-    ListaTareasComponent
+    ListaTareasComponent,
+    FormularioTareaComponent
   ],
   imports: [
     BrowserModule, 

@@ -1,1 +1,12 @@
-<button class="btn btn-selected">Agregar Tarea</button>
+
+<button class="btn btn-selected"
+(click)="onSelect()"
+[class.btn-selected]="!abierto"
+[class.btn-unselected]="abierto"
+>
+    Agregar Tarea
+</button>
+
+<app-formulario-tarea *ngIf="abierto"></app-formulario-tarea>
+
+
