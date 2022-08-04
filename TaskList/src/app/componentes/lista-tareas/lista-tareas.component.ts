@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TAREAS } from '../../MockTareas';
+import { ITarea } from 'src/app/Interfaces/ITarea';
+import { TareaService } from "../../servicios/tarea.service";
 
 @Component({
   selector: 'app-lista-tareas',
@@ -8,11 +10,15 @@ import { TAREAS } from '../../MockTareas';
 })
 export class ListaTareasComponent implements OnInit {
 
-  listaTareas = TAREAS;
+  tareas:ITarea[] = [];
 
-  constructor() { }
+  constructor(private servicioTareas:TareaService) { }
 
   ngOnInit(): void {
+    this.getTareas();
   }
 
+  getTareas():void{
+    this.tareas = this.servicioTareas.Tareas;
+  }
 }
