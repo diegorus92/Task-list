@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { ITarea } from 'src/app/Interfaces/ITarea';
+import { TareaService } from 'src/app/servicios/tarea.service';
 
 @Component({
   selector: 'app-formulario-tarea',
@@ -8,12 +10,15 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class FormularioTareaComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private servicioTareas: TareaService,
+    ) { }
 
 
   formulario:FormGroup = this.formBuilder.group({
     descripcion: ['',[Validators.required]],
-    fecha: ['',[Validators.required]],
+    dia: ['',[Validators.required]],
     recordatorio:[false,[]],
   });
 
@@ -25,7 +30,11 @@ export class FormularioTareaComponent implements OnInit {
   }
 
   get Fecha(){
-    return this.formulario.get('fecha');
+    return this.formulario.get('dia');
+  }
+
+  agregarTarea(tarea:ITarea){
+    this.servicioTareas.Tarea = tarea;
   }
 
   onEnviar(evento:Event):void{
@@ -33,7 +42,8 @@ export class FormularioTareaComponent implements OnInit {
 
     if(this.formulario.valid){
       console.log("formulario valido!");
-      console.log(this.formulario.value);
+      console.log('captado por el formulario:',this.formulario.value);
+      this.agregarTarea(this.formulario.value as ITarea);
       this.formulario.reset();
     }
     else{

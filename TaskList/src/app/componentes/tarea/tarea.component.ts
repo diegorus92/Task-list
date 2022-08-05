@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faCoffee, faThList, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { TareaService } from 'src/app/servicios/tarea.service';
 
 import { ITarea } from '../../Interfaces/ITarea';
 
@@ -17,7 +18,8 @@ export class TareaComponent implements OnInit {
     recordatorio: false,
   };
 
-  constructor() { }
+
+  constructor(private servicioTarea:TareaService) { }
 
   ngOnInit(): void {
   }
@@ -26,4 +28,7 @@ export class TareaComponent implements OnInit {
     return this.tarea.recordatorio;
   }
 
+  eliminarTarea():void{
+    this.servicioTarea.removerTarea(this.tarea);
+  }
 }

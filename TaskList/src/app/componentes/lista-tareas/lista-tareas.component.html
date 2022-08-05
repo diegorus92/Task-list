@@ -1,6 +1,6 @@
 <ul>
     <li type="none" *ngFor="let tarea of tareas">
-        <app-tarea [tarea]="tarea"></app-tarea>
+        <app-tarea [tarea]="tarea" (dblclick)="modificarRecordatorio(tarea)"></app-tarea>
     </li>
     
 </ul>

@@ -21,4 +21,11 @@ export class ListaTareasComponent implements OnInit {
   getTareas():void{
     this.tareas = this.servicioTareas.Tareas;
   }
+
+  modificarRecordatorio(tarea:ITarea):void{
+    tarea.recordatorio = !tarea.recordatorio;
+    this.servicioTareas.modificarTarea(tarea);
+  }
+
+
 }
