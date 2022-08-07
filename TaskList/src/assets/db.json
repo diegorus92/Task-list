@@ -1,22 +1,28 @@
 {
   "tareas": [
     {
-      "id": 1,
-      "descripcion": "Terminar módulo de Angular",
-      "dia": "Agosto 5 a las 12:00",
-      "recordatorio": false
+      "descripcion": "Jugar al COD Mobile",
+      "dia": "Ahora mismo papuh :V",
+      "recordatorio": true,
+      "id": 2
     },
     {
-      "id": 2,
-      "descripcion": "Comprar pan y vino",
-      "dia": "Agosto 10 a las 18:00",
-      "recordatorio": true
-    },
-    {
-      "descripcion": "fagagfa",
-      "dia": "afadfadfa fadf",
+      "descripcion": "Hacer ejercicio físico",
+      "dia": "Lunes 08 a las 16:30hs",
       "recordatorio": true,
       "id": 3
+    },
+    {
+      "descripcion": "Limpiar mi cuarto",
+      "dia": "Domingo 07 a las 18:00hs",
+      "recordatorio": true,
+      "id": 4
+    },
+    {
+      "descripcion": "Crear base de datos para el proyecto",
+      "dia": "Domingo 28, 22:00hs",
+      "recordatorio": false,
+      "id": 5
     }
   ]
 }

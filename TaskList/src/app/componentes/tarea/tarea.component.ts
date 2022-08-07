@@ -28,7 +28,8 @@ export class TareaComponent implements OnInit {
     return this.tarea.recordatorio;
   }
 
-  eliminarTarea():void{
-    
+  eliminarTarea(): void {
+    console.log("quiero eliminar ", this.tarea);
+    this.servicioTarea.removerTarea(this.tarea).subscribe((tarea) => console.log("Tarea removida: ", this.tarea));
   }
 }

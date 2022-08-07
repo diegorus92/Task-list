@@ -9,6 +9,9 @@ import { BotonAgregarComponent } from './componentes/boton-agregar/boton-agregar
 import { ListaTareasComponent } from './componentes/lista-tareas/lista-tareas.component';
 import { FormularioTareaComponent } from './componentes/formulario-tarea/formulario-tarea.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AboutComponent } from './componentes/about/about.component';
+import { Error404Component } from './componentes/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,17 @@ import { HttpClientModule } from '@angular/common/http';
     TareaComponent,
     BotonAgregarComponent,
     ListaTareasComponent,
-    FormularioTareaComponent
+    FormularioTareaComponent,
+    AboutComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule, 
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

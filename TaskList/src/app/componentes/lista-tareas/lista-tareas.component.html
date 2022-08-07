@@ -1,7 +1,11 @@
 <ul>
     <li type="none" *ngFor="let tarea of tareas">
         <app-tarea [tarea]="tarea" (dblclick)="modificarRecordatorio(tarea)"></app-tarea>
-    </li>
-    
+    </li>    
 </ul>
+
+<footer>
+    <a routerLink="/about">About</a>
+</footer>
+
 

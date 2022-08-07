@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ITarea } from '../Interfaces/ITarea';
 import { TAREAS } from '../MockTareas';
 import { HttpClient, HttpHeaders, HttpParamsOptions } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, map } from 'rxjs';
 
 const HttpOptions = {
   headers: new HttpHeaders({
@@ -37,7 +37,7 @@ export class TareaService {
     return this.http.get<ITarea[]>(this.apiUrl);
   }
 
-  recuperarTareas():void{ //guarda el contenido de la lista "tareas" de esta clase en en la ListaTareas para tenerla actualizada
+  actualizarSubject():void{ //guarda el contenido de la lista "tareas" de esta clase en en la ListaTareas para tenerla actualizada
     this.ListaTareas.next(this.tareas);
   }
 
@@ -51,7 +51,7 @@ export class TareaService {
   agregarTarea(tarea:ITarea):Observable<ITarea>{//agrega la nueva tarea en la lista tareas de la clase
                                                 //Agrega la tarea nueva a la ListaTareas
                                                 //Agrega la tarea nueva a la DB
-    //this.generarId(tarea); //Esto me genera error 
+    tarea.id! = this.generarId();
     this.tareas.push(tarea);
     this.ListaTareas.next(this.tareas);
     return this.http.post<ITarea>(this.apiUrl, tarea, HttpOptions);
@@ -59,19 +59,13 @@ export class TareaService {
 
   
 
-  /*generarId(tarea:ITarea){
-    if(this.ListaTareas.length > 0){
-      let ultimoId:number = this.ListaTareas[this.ListaTareas.length-1].id as number;
-      tarea.id = (ultimoId + 1);
-    }
-    else{
-      tarea.id = 1;
-    }
-  }*/
+  generarId():number{
+    return this.tareas.length > 0 ? Math.max(...this.tareas.map(tarea => tarea.id!)) +1 : 1;
+  }
 
-  /*buscarIndiceTarea(tarea:ITarea):number{                 //USADO PARA EL MockTareas.ts
-    return this.ListaTareas.findIndex(obj => obj.id == tarea.id)
-  }*/
+  buscarIndiceTarea(tarea:ITarea):number{                 //USADO PARA EL MockTareas.ts
+    return this.tareas.findIndex(obj => obj.id == tarea.id)
+  }
 
   /*modificarTarea(tarea:ITarea):void{          //USADO PARA EL MockTareas.ts
     let indice:number = this.buscarIndiceTarea(tarea);
@@ -89,12 +83,18 @@ export class TareaService {
     return this.http.put<ITarea>(url, tarea, HttpOptions);
   }
 
-  /*removerTarea(tarea:ITarea):void{                    //USADO PARA EL MockTareas.ts
+  private removerTareaDeLista(tarea:ITarea):void{                    //USADO PARA EL MockTareas.ts
     let indice:number = this.buscarIndiceTarea(tarea);
     if(indice > -1){
-      this.ListaTareas.splice(indice, 1);
+      this.tareas.splice(indice, 1);
     }
     else
       console.log("tarea no encontrada");
-  }*/
+  }
+
+  removerTarea(tarea:ITarea):Observable<ITarea>{
+    this.removerTareaDeLista(tarea);
+    let url = `${this.apiUrl}/${tarea.id}`;
+    return this.http.delete<ITarea>(url);
+  }
 }
