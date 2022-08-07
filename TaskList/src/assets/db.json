@@ -1,0 +1,22 @@
+{
+  "tareas": [
+    {
+      "id": 1,
+      "descripcion": "Terminar módulo de Angular",
+      "dia": "Agosto 5 a las 12:00",
+      "recordatorio": false
+    },
+    {
+      "id": 2,
+      "descripcion": "Comprar pan y vino",
+      "dia": "Agosto 10 a las 18:00",
+      "recordatorio": true
+    },
+    {
+      "descripcion": "fagagfa",
+      "dia": "afadfadfa fadf",
+      "recordatorio": true,
+      "id": 3
+    }
+  ]
+}

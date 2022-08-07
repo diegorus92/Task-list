@@ -29,6 +29,6 @@ export class TareaComponent implements OnInit {
   }
 
   eliminarTarea():void{
-    this.servicioTarea.removerTarea(this.tarea);
+    
   }
 }

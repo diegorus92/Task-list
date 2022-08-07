@@ -8,6 +8,7 @@ import { TareaComponent } from './componentes/tarea/tarea.component';
 import { BotonAgregarComponent } from './componentes/boton-agregar/boton-agregar.component';
 import { ListaTareasComponent } from './componentes/lista-tareas/lista-tareas.component';
 import { FormularioTareaComponent } from './componentes/formulario-tarea/formulario-tarea.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormularioTareaComponent } from './componentes/formulario-tarea/formula
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

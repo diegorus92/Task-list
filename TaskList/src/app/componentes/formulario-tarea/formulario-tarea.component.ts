@@ -16,6 +16,8 @@ export class FormularioTareaComponent implements OnInit {
     ) { }
 
 
+  tareaActual?: ITarea;
+
   formulario:FormGroup = this.formBuilder.group({
     descripcion: ['',[Validators.required]],
     dia: ['',[Validators.required]],
@@ -34,7 +36,7 @@ export class FormularioTareaComponent implements OnInit {
   }
 
   agregarTarea(tarea:ITarea){
-    this.servicioTareas.Tarea = tarea;
+    this.servicioTareas.agregarTarea(tarea).subscribe();
   }
 
   onEnviar(evento:Event):void{
