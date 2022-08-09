@@ -3,13 +3,13 @@
     {
       "descripcion": "Jugar al COD Mobile",
       "dia": "Ahora mismo papuh :V",
-      "recordatorio": true,
+      "recordatorio": false,
       "id": 2
     },
     {
       "descripcion": "Hacer ejercicio físico",
       "dia": "Lunes 08 a las 16:30hs",
-      "recordatorio": true,
+      "recordatorio": false,
       "id": 3
     },
     {
@@ -21,7 +21,7 @@
     {
       "descripcion": "Crear base de datos para el proyecto",
       "dia": "Domingo 28, 22:00hs",
-      "recordatorio": false,
+      "recordatorio": true,
       "id": 5
     }
   ]

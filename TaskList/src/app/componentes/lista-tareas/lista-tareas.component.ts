@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TAREAS } from '../../MockTareas';
 import { ITarea } from 'src/app/Interfaces/ITarea';
 import { TareaService } from "../../servicios/tarea.service";
-import { tap } from 'rxjs/operators';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-lista-tareas',
@@ -41,5 +41,9 @@ export class ListaTareasComponent implements OnInit {
     this.servicioTareas.modificarTarea(tarea).subscribe();
   }
 
+  drop(event: CdkDragDrop<ITarea[]>){
+    moveItemInArray(this.tareas, event.previousIndex, event.currentIndex);
+    console.log("Ejecutado Drag&Drop: ",this.tareas);
+  }
 
 }

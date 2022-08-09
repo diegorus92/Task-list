@@ -92,9 +92,11 @@ export class TareaService {
       console.log("tarea no encontrada");
   }
 
+
   removerTarea(tarea:ITarea):Observable<ITarea>{
     this.removerTareaDeLista(tarea);
     let url = `${this.apiUrl}/${tarea.id}`;
     return this.http.delete<ITarea>(url);
   }
+
 }

@@ -13,6 +13,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './componentes/about/about.component';
 import { Error404Component } from './componentes/error404/error404.component';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +24,7 @@ import { Error404Component } from './componentes/error404/error404.component';
     ListaTareasComponent,
     FormularioTareaComponent,
     AboutComponent,
-    Error404Component
+    Error404Component,
   ],
   imports: [
     BrowserModule, 
@@ -29,7 +32,8 @@ import { Error404Component } from './componentes/error404/error404.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
