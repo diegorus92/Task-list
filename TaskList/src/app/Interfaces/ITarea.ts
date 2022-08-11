@@ -3,4 +3,5 @@ export interface ITarea{
     descripcion: string;
     dia: string;
     recordatorio: boolean;
+    orden: number;
 }

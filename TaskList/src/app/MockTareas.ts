@@ -7,6 +7,7 @@ export const TAREAS:ITarea[] = [
         descripcion: "Terminar módulo de Angular",
         dia: "Agosto 5 a las 12:00",
         recordatorio: false,
+        orden: 0
     },
 
     {
@@ -14,6 +15,7 @@ export const TAREAS:ITarea[] = [
         descripcion: "Comprar pan y vino",
         dia: "Agosto 10 a las 18:00",
         recordatorio: true,
+        orden: 1
     },
 
     {
@@ -21,6 +23,7 @@ export const TAREAS:ITarea[] = [
         descripcion: "Viciar en la PC",
         dia: "Septiembre 8 a las 12:30",
         recordatorio: false,
+        orden: 2
     },
 
     {
@@ -28,5 +31,6 @@ export const TAREAS:ITarea[] = [
         descripcion: "Terminar Aplicación web para empresa",
         dia: "Septiembre 25 a las 22:00",
         recordatorio: true,
+        orden: 4
     },
 ]

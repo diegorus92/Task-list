@@ -37,6 +37,7 @@ export class TareaService {
     return this.http.get<ITarea[]>(this.apiUrl);
   }
 
+
   actualizarSubject():void{ //guarda el contenido de la lista "tareas" de esta clase en en la ListaTareas para tenerla actualizada
     this.ListaTareas.next(this.tareas);
   }
@@ -48,17 +49,6 @@ export class TareaService {
   }*/
 
 
-  agregarTarea(tarea:ITarea):Observable<ITarea>{//agrega la nueva tarea en la lista tareas de la clase
-                                                //Agrega la tarea nueva a la ListaTareas
-                                                //Agrega la tarea nueva a la DB
-    tarea.id! = this.generarId();
-    this.tareas.push(tarea);
-    this.ListaTareas.next(this.tareas);
-    return this.http.post<ITarea>(this.apiUrl, tarea, HttpOptions);
-  }
-
-  
-
   generarId():number{
     return this.tareas.length > 0 ? Math.max(...this.tareas.map(tarea => tarea.id!)) +1 : 1;
   }
@@ -66,6 +56,27 @@ export class TareaService {
   buscarIndiceTarea(tarea:ITarea):number{                 //USADO PARA EL MockTareas.ts
     return this.tareas.findIndex(obj => obj.id == tarea.id)
   }
+
+  generarOrden(tarea:ITarea):void{
+    let orden:number = 0;
+    for(let i=0; i < this.tareas.length; i++){
+      if(orden < this.tareas[i].orden){
+        orden = this.tareas[i].orden;
+      }
+      tarea.orden = orden + 1;
+    }
+  }
+
+  agregarTarea(tarea:ITarea):Observable<ITarea>{//agrega la nueva tarea en la lista tareas de la clase
+                                                //Agrega la tarea nueva a la ListaTareas
+                                                //Agrega la tarea nueva a la DB
+    this.generarOrden(tarea);
+    tarea.id! = this.generarId();
+    this.tareas.push(tarea);
+    this.ListaTareas.next(this.tareas);
+    return this.http.post<ITarea>(this.apiUrl, tarea, HttpOptions);
+  }
+
 
   /*modificarTarea(tarea:ITarea):void{          //USADO PARA EL MockTareas.ts
     let indice:number = this.buscarIndiceTarea(tarea);

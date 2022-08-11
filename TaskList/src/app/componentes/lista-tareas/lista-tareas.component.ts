@@ -22,6 +22,7 @@ export class ListaTareasComponent implements OnInit {
     this.servicioTareas.getTareas()   //Se suscribe al obserbavle getTareas() que recupera asincronicamente
                                       //las tareas de la DB
     .subscribe((tareas) => {  //Dentro del subscribe, recupera las tareas de la DB y:
+      this.ordenarTareas(tareas); // Ordeno la lista de tareas recibidas en función de su campo "orden"
       this.tareas = tareas;   //-las almacena en la lista tareas de esta clase...
       this.servicioTareas.tareas = this.tareas; //-copia la lista tareas de esta clase a la lista tareas de la del servicio...
       this.servicioTareas.actualizarSubject();//-ejectuta la funcion del servicio que actualiza la ListaTareas del mismo con el contenido de su lista tareas del mismo cargada en la linea anterior...
@@ -36,6 +37,14 @@ export class ListaTareasComponent implements OnInit {
     this.tareas = this.servicioTareas.Tareas;
   }*/
 
+  private ordenarTareas(tareas:ITarea[]):void{
+    tareas.sort((a:ITarea, b:ITarea) =>{
+      if(a.orden > b.orden) return 1;
+      if(a.orden < b.orden) return -1;
+      return 0;
+    })
+  }
+
   modificarRecordatorio(tarea:ITarea):void{
     tarea.recordatorio = !tarea.recordatorio;
     this.servicioTareas.modificarTarea(tarea).subscribe();
@@ -44,6 +53,12 @@ export class ListaTareasComponent implements OnInit {
   drop(event: CdkDragDrop<ITarea[]>){
     moveItemInArray(this.tareas, event.previousIndex, event.currentIndex);
     console.log("Ejecutado Drag&Drop: ",this.tareas);
+    
+    // Renumero el orden
+    for(var i=0; i<this.tareas.length; i++){
+      this.tareas[i].orden = i;
+      this.servicioTareas.modificarTarea(this.tareas[i]).subscribe();
+    }
   }
 
 }

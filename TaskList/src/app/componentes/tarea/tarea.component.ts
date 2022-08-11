@@ -16,6 +16,7 @@ export class TareaComponent implements OnInit {
     descripcion:"",
     dia:"",
     recordatorio: false,
+    orden: 0
   };
 
 
